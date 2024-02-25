@@ -1,0 +1,38 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType oauth2
+    baseName talentos
+    buildTool maven
+    cacheProvider no
+    clientFramework angular
+    clientTheme vapor
+    clientThemeVariant primary
+    creationTimestamp 1708866482591
+    databaseType sql
+    devDatabaseType h2Memory
+    enableHibernateCache false
+    enableSwaggerCodegen false
+    enableTranslation true
+    feignClient false
+    jhipsterVersion "8.1.0"
+    languages [pt-br, en, es]
+    messageBroker false
+    microfrontends []
+    nativeLanguage pt-br
+    packageName br.com.home
+    prodDatabaseType postgresql
+    reactive false
+    searchEngine false
+    serviceDiscoveryType false
+    skipUserManagement true
+    testFrameworks []
+    websocket false
+    withAdminUi true
+  }
+  entities *
+}
+entity Talento {
+    nome String required
+    age Integer min(42) max(42)
+}
