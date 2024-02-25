@@ -32,7 +32,17 @@ application {
   }
   entities *
 }
-entity Talento {
+entity Pessoa {
     nome String required
-    age Integer min(42) max(42)
+    email String required
+    cpf String required
+    nascimento Date
+    genero Genero
+    miniBio String
+    fotoPerfilUrl String
+    criadoEm Instant
+}
+
+enum Genero {
+    MASC, FEM, OUTRO
 }

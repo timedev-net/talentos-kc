@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pessoa) {
+      <div>
+        <h2 data-cy="pessoaDetailsHeading"><span jhiTranslate="talentosApp.pessoa.detail.title">Pessoa</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ pessoa.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.nome">Nome</span></dt>
+          <dd>
+            <span>{{ pessoa.nome }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.email">Email</span></dt>
+          <dd>
+            <span>{{ pessoa.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.cpf">Cpf</span></dt>
+          <dd>
+            <span>{{ pessoa.cpf }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.nascimento">Nascimento</span></dt>
+          <dd>
+            <span>{{ pessoa.nascimento | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.genero">Genero</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'talentosApp.Genero.' + pessoa.genero }}">{{ pessoa.genero }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.miniBio">Mini Bio</span></dt>
+          <dd>
+            <span>{{ pessoa.miniBio }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.fotoPerfilUrl">Foto Perfil Url</span></dt>
+          <dd>
+            <span>{{ pessoa.fotoPerfilUrl }}</span>
+          </dd>
+          <dt><span jhiTranslate="talentosApp.pessoa.criadoEm">Criado Em</span></dt>
+          <dd>
+            <span>{{ pessoa.criadoEm | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pessoa', pessoa.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

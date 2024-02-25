@@ -1,0 +1,31 @@
+{
+  "talentosApp": {
+    "pessoa": {
+      "home": {
+        "title": "Pessoas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Pessoa",
+        "createOrEditLabel": "Crear o editar Pessoa",
+        "notFound": "Ningún Pessoas encontrado"
+      },
+      "created": "Un nuevo Pessoa ha sido creado con el identificador {{ param }}",
+      "updated": "Un Pessoa ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Pessoa ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Pessoa {{ id }}?"
+      },
+      "detail": {
+        "title": "Pessoa"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "email": "Email",
+      "cpf": "Cpf",
+      "nascimento": "Nascimento",
+      "genero": "Genero",
+      "miniBio": "Mini Bio",
+      "fotoPerfilUrl": "Foto Perfil Url",
+      "criadoEm": "Criado Em"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "talentosApp": {
+    "Genero": {
+      "null": "",
+      "MASC": "MASC",
+      "FEM": "FEM",
+      "OUTRO": "OUTRO"
+    }
+  }
+}

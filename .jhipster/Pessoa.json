@@ -1,0 +1,48 @@
+{
+  "annotations": {
+    "changelogDate": "20240225211906"
+  },
+  "applications": ["talentos"],
+  "entityTableName": "pessoa",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cpf",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nascimento",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "genero",
+      "fieldType": "Genero",
+      "fieldValues": "MASC,FEM,OUTRO"
+    },
+    {
+      "fieldName": "miniBio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fotoPerfilUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "criadoEm",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Pessoa",
+  "relationships": [],
+  "searchEngine": "no"
+}

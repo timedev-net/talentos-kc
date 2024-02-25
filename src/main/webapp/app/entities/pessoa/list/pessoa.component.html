@@ -1,0 +1,142 @@
+<div>
+  <h2 id="page-heading" data-cy="PessoaHeading">
+    <span jhiTranslate="talentosApp.pessoa.home.title">Pessoas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="talentosApp.pessoa.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-pessoa"
+        [routerLink]="['/pessoa/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="talentosApp.pessoa.home.createLabel">Criar novo Pessoa</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (pessoas?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="talentosApp.pessoa.home.notFound">Nenhum Pessoa encontrado</span>
+    </div>
+  }
+
+  @if (pessoas && pessoas.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nome">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.nome">Nome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cpf">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.cpf">Cpf</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nascimento">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.nascimento">Nascimento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="genero">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.genero">Genero</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="miniBio">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.miniBio">Mini Bio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fotoPerfilUrl">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.fotoPerfilUrl">Foto Perfil Url</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="criadoEm">
+              <div class="d-flex">
+                <span jhiTranslate="talentosApp.pessoa.criadoEm">Criado Em</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pessoa of pessoas; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/pessoa', pessoa.id, 'view']">{{ pessoa.id }}</a>
+              </td>
+              <td>{{ pessoa.nome }}</td>
+              <td>{{ pessoa.email }}</td>
+              <td>{{ pessoa.cpf }}</td>
+              <td>{{ pessoa.nascimento | formatMediumDatetime }}</td>
+              <td jhiTranslate="{{ 'talentosApp.Genero.' + pessoa.genero }}">{{ pessoa.genero }}</td>
+              <td>{{ pessoa.miniBio }}</td>
+              <td>{{ pessoa.fotoPerfilUrl }}</td>
+              <td>{{ pessoa.criadoEm | formatMediumDatetime }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/pessoa', pessoa.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a [routerLink]="['/pessoa', pessoa.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(pessoa)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Excluir</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
