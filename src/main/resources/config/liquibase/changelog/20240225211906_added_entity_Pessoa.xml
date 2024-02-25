@@ -32,7 +32,10 @@
             <column name="mini_bio" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="foto_perfil_url" type="varchar(255)">
+            <column name="foto_perfil_url" type="${blobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="foto_perfil_url_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="criado_em" type="${datetimeType}">
@@ -67,7 +70,8 @@
             <column name="nascimento" type="date"/>
             <column name="genero" type="string"/>
             <column name="mini_bio" type="string"/>
-            <column name="foto_perfil_url" type="string"/>
+            <column name="foto_perfil_url" type="blob"/>
+            <column name="foto_perfil_url_content_type" type="string"/>
             <column name="criado_em" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

@@ -10,6 +10,7 @@ export interface IPessoa {
   genero?: keyof typeof Genero | null;
   miniBio?: string | null;
   fotoPerfilUrl?: string | null;
+  fotoPerfilUrlContentType?: string | null;
   criadoEm?: dayjs.Dayjs | null;
 }
 

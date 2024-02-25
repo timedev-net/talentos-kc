@@ -35,7 +35,8 @@
     },
     {
       "fieldName": "fotoPerfilUrl",
-      "fieldType": "String"
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
     },
     {
       "fieldName": "criadoEm",

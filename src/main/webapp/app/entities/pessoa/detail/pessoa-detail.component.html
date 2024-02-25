@@ -41,7 +41,18 @@
           </dd>
           <dt><span jhiTranslate="talentosApp.pessoa.fotoPerfilUrl">Foto Perfil Url</span></dt>
           <dd>
-            <span>{{ pessoa.fotoPerfilUrl }}</span>
+            @if (pessoa.fotoPerfilUrl) {
+              <div>
+                <a (click)="openFile(pessoa.fotoPerfilUrl, pessoa.fotoPerfilUrlContentType)">
+                  <img
+                    [src]="'data:' + pessoa.fotoPerfilUrlContentType + ';base64,' + pessoa.fotoPerfilUrl"
+                    style="max-width: 100%"
+                    alt="pessoa image"
+                  />
+                </a>
+                {{ pessoa.fotoPerfilUrlContentType }}, {{ byteSize(pessoa.fotoPerfilUrl) }}
+              </div>
+            }
           </dd>
           <dt><span jhiTranslate="talentosApp.pessoa.criadoEm">Criado Em</span></dt>
           <dd>

@@ -16,26 +16,28 @@ export const sampleWithPartialData: IPessoa = {
   cpf: 'overextend since',
   genero: 'FEM',
   miniBio: 'anti office',
-  fotoPerfilUrl: 'hence because reinvest',
-  criadoEm: dayjs('2024-02-24T21:58'),
+  fotoPerfilUrl: '../fake-data/blob/hipster.png',
+  fotoPerfilUrlContentType: 'unknown',
+  criadoEm: dayjs('2024-02-25T02:58'),
 };
 
 export const sampleWithFullData: IPessoa = {
-  id: 9344,
-  nome: 'depression',
-  email: 'Natalia.Souza5@yahoo.com',
-  cpf: 'accidentally scow',
-  nascimento: dayjs('2024-02-25T07:58'),
-  genero: 'FEM',
-  miniBio: 'actually',
-  fotoPerfilUrl: 'alongside',
-  criadoEm: dayjs('2024-02-25T01:26'),
+  id: 26373,
+  nome: 'tornado',
+  email: 'Emanuelly15@hotmail.com',
+  cpf: 'ah',
+  nascimento: dayjs('2024-02-25T20:16'),
+  genero: 'MASC',
+  miniBio: 'bustle alongside',
+  fotoPerfilUrl: '../fake-data/blob/hipster.png',
+  fotoPerfilUrlContentType: 'unknown',
+  criadoEm: dayjs('2024-02-25T09:01'),
 };
 
 export const sampleWithNewData: NewPessoa = {
-  nome: 'furthermore flowery ha',
-  email: 'Marcelo_Pereira@bol.com.br',
-  cpf: 'provided daily',
+  nome: 'ugh contest actually',
+  email: 'Bruna_Costa@bol.com.br',
+  cpf: 'curiously',
   id: null,
 };
 

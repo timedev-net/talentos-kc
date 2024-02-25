@@ -13,6 +13,7 @@ import br.com.home.repository.PessoaRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Base64;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -51,8 +52,10 @@ class PessoaResourceIT {
     private static final String DEFAULT_MINI_BIO = "AAAAAAAAAA";
     private static final String UPDATED_MINI_BIO = "BBBBBBBBBB";
 
-    private static final String DEFAULT_FOTO_PERFIL_URL = "AAAAAAAAAA";
-    private static final String UPDATED_FOTO_PERFIL_URL = "BBBBBBBBBB";
+    private static final byte[] DEFAULT_FOTO_PERFIL_URL = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_FOTO_PERFIL_URL = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_FOTO_PERFIL_URL_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE = "image/png";
 
     private static final Instant DEFAULT_CRIADO_EM = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CRIADO_EM = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -89,6 +92,7 @@ class PessoaResourceIT {
             .genero(DEFAULT_GENERO)
             .miniBio(DEFAULT_MINI_BIO)
             .fotoPerfilUrl(DEFAULT_FOTO_PERFIL_URL)
+            .fotoPerfilUrlContentType(DEFAULT_FOTO_PERFIL_URL_CONTENT_TYPE)
             .criadoEm(DEFAULT_CRIADO_EM);
         return pessoa;
     }
@@ -108,6 +112,7 @@ class PessoaResourceIT {
             .genero(UPDATED_GENERO)
             .miniBio(UPDATED_MINI_BIO)
             .fotoPerfilUrl(UPDATED_FOTO_PERFIL_URL)
+            .fotoPerfilUrlContentType(UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE)
             .criadoEm(UPDATED_CRIADO_EM);
         return pessoa;
     }
@@ -139,6 +144,7 @@ class PessoaResourceIT {
         assertThat(testPessoa.getGenero()).isEqualTo(DEFAULT_GENERO);
         assertThat(testPessoa.getMiniBio()).isEqualTo(DEFAULT_MINI_BIO);
         assertThat(testPessoa.getFotoPerfilUrl()).isEqualTo(DEFAULT_FOTO_PERFIL_URL);
+        assertThat(testPessoa.getFotoPerfilUrlContentType()).isEqualTo(DEFAULT_FOTO_PERFIL_URL_CONTENT_TYPE);
         assertThat(testPessoa.getCriadoEm()).isEqualTo(DEFAULT_CRIADO_EM);
     }
 
@@ -237,7 +243,8 @@ class PessoaResourceIT {
             .andExpect(jsonPath("$.[*].nascimento").value(hasItem(DEFAULT_NASCIMENTO.toString())))
             .andExpect(jsonPath("$.[*].genero").value(hasItem(DEFAULT_GENERO.toString())))
             .andExpect(jsonPath("$.[*].miniBio").value(hasItem(DEFAULT_MINI_BIO)))
-            .andExpect(jsonPath("$.[*].fotoPerfilUrl").value(hasItem(DEFAULT_FOTO_PERFIL_URL)))
+            .andExpect(jsonPath("$.[*].fotoPerfilUrlContentType").value(hasItem(DEFAULT_FOTO_PERFIL_URL_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].fotoPerfilUrl").value(hasItem(Base64.getEncoder().encodeToString(DEFAULT_FOTO_PERFIL_URL))))
             .andExpect(jsonPath("$.[*].criadoEm").value(hasItem(DEFAULT_CRIADO_EM.toString())));
     }
 
@@ -259,7 +266,8 @@ class PessoaResourceIT {
             .andExpect(jsonPath("$.nascimento").value(DEFAULT_NASCIMENTO.toString()))
             .andExpect(jsonPath("$.genero").value(DEFAULT_GENERO.toString()))
             .andExpect(jsonPath("$.miniBio").value(DEFAULT_MINI_BIO))
-            .andExpect(jsonPath("$.fotoPerfilUrl").value(DEFAULT_FOTO_PERFIL_URL))
+            .andExpect(jsonPath("$.fotoPerfilUrlContentType").value(DEFAULT_FOTO_PERFIL_URL_CONTENT_TYPE))
+            .andExpect(jsonPath("$.fotoPerfilUrl").value(Base64.getEncoder().encodeToString(DEFAULT_FOTO_PERFIL_URL)))
             .andExpect(jsonPath("$.criadoEm").value(DEFAULT_CRIADO_EM.toString()));
     }
 
@@ -290,6 +298,7 @@ class PessoaResourceIT {
             .genero(UPDATED_GENERO)
             .miniBio(UPDATED_MINI_BIO)
             .fotoPerfilUrl(UPDATED_FOTO_PERFIL_URL)
+            .fotoPerfilUrlContentType(UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE)
             .criadoEm(UPDATED_CRIADO_EM);
 
         restPessoaMockMvc
@@ -312,6 +321,7 @@ class PessoaResourceIT {
         assertThat(testPessoa.getGenero()).isEqualTo(UPDATED_GENERO);
         assertThat(testPessoa.getMiniBio()).isEqualTo(UPDATED_MINI_BIO);
         assertThat(testPessoa.getFotoPerfilUrl()).isEqualTo(UPDATED_FOTO_PERFIL_URL);
+        assertThat(testPessoa.getFotoPerfilUrlContentType()).isEqualTo(UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE);
         assertThat(testPessoa.getCriadoEm()).isEqualTo(UPDATED_CRIADO_EM);
     }
 
@@ -392,7 +402,8 @@ class PessoaResourceIT {
             .email(UPDATED_EMAIL)
             .genero(UPDATED_GENERO)
             .miniBio(UPDATED_MINI_BIO)
-            .fotoPerfilUrl(UPDATED_FOTO_PERFIL_URL);
+            .fotoPerfilUrl(UPDATED_FOTO_PERFIL_URL)
+            .fotoPerfilUrlContentType(UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE);
 
         restPessoaMockMvc
             .perform(
@@ -414,6 +425,7 @@ class PessoaResourceIT {
         assertThat(testPessoa.getGenero()).isEqualTo(UPDATED_GENERO);
         assertThat(testPessoa.getMiniBio()).isEqualTo(UPDATED_MINI_BIO);
         assertThat(testPessoa.getFotoPerfilUrl()).isEqualTo(UPDATED_FOTO_PERFIL_URL);
+        assertThat(testPessoa.getFotoPerfilUrlContentType()).isEqualTo(UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE);
         assertThat(testPessoa.getCriadoEm()).isEqualTo(DEFAULT_CRIADO_EM);
     }
 
@@ -437,6 +449,7 @@ class PessoaResourceIT {
             .genero(UPDATED_GENERO)
             .miniBio(UPDATED_MINI_BIO)
             .fotoPerfilUrl(UPDATED_FOTO_PERFIL_URL)
+            .fotoPerfilUrlContentType(UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE)
             .criadoEm(UPDATED_CRIADO_EM);
 
         restPessoaMockMvc
@@ -459,6 +472,7 @@ class PessoaResourceIT {
         assertThat(testPessoa.getGenero()).isEqualTo(UPDATED_GENERO);
         assertThat(testPessoa.getMiniBio()).isEqualTo(UPDATED_MINI_BIO);
         assertThat(testPessoa.getFotoPerfilUrl()).isEqualTo(UPDATED_FOTO_PERFIL_URL);
+        assertThat(testPessoa.getFotoPerfilUrlContentType()).isEqualTo(UPDATED_FOTO_PERFIL_URL_CONTENT_TYPE);
         assertThat(testPessoa.getCriadoEm()).isEqualTo(UPDATED_CRIADO_EM);
     }
 

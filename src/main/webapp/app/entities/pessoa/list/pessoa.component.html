@@ -113,7 +113,18 @@
               <td>{{ pessoa.nascimento | formatMediumDatetime }}</td>
               <td jhiTranslate="{{ 'talentosApp.Genero.' + pessoa.genero }}">{{ pessoa.genero }}</td>
               <td>{{ pessoa.miniBio }}</td>
-              <td>{{ pessoa.fotoPerfilUrl }}</td>
+              <td>
+                @if (pessoa.fotoPerfilUrl) {
+                  <a (click)="openFile(pessoa.fotoPerfilUrl, pessoa.fotoPerfilUrlContentType)">
+                    <img
+                      [src]="'data:' + pessoa.fotoPerfilUrlContentType + ';base64,' + pessoa.fotoPerfilUrl"
+                      style="max-height: 30px"
+                      alt="pessoa image"
+                    />
+                  </a>
+                  <span>{{ pessoa.fotoPerfilUrlContentType }}, {{ byteSize(pessoa.fotoPerfilUrl) }}</span>
+                }
+              </td>
               <td>{{ pessoa.criadoEm | formatMediumDatetime }}</td>
               <td class="text-end">
                 <div class="btn-group">

@@ -10,11 +10,11 @@ public class PessoaTestSamples {
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     public static Pessoa getPessoaSample1() {
-        return new Pessoa().id(1L).nome("nome1").email("email1").cpf("cpf1").miniBio("miniBio1").fotoPerfilUrl("fotoPerfilUrl1");
+        return new Pessoa().id(1L).nome("nome1").email("email1").cpf("cpf1").miniBio("miniBio1");
     }
 
     public static Pessoa getPessoaSample2() {
-        return new Pessoa().id(2L).nome("nome2").email("email2").cpf("cpf2").miniBio("miniBio2").fotoPerfilUrl("fotoPerfilUrl2");
+        return new Pessoa().id(2L).nome("nome2").email("email2").cpf("cpf2").miniBio("miniBio2");
     }
 
     public static Pessoa getPessoaRandomSampleGenerator() {
@@ -23,7 +23,6 @@ public class PessoaTestSamples {
             .nome(UUID.randomUUID().toString())
             .email(UUID.randomUUID().toString())
             .cpf(UUID.randomUUID().toString())
-            .miniBio(UUID.randomUUID().toString())
-            .fotoPerfilUrl(UUID.randomUUID().toString());
+            .miniBio(UUID.randomUUID().toString());
     }
 }

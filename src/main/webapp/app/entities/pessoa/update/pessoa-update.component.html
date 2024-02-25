@@ -83,13 +83,51 @@
 
         <div class="mb-3">
           <label class="form-label" jhiTranslate="talentosApp.pessoa.fotoPerfilUrl" for="field_fotoPerfilUrl">Foto Perfil Url</label>
+          <div>
+            @if (editForm.get('fotoPerfilUrl')!.value) {
+              <img
+                [src]="'data:' + editForm.get('fotoPerfilUrlContentType')!.value + ';base64,' + editForm.get('fotoPerfilUrl')!.value"
+                style="max-height: 100px"
+                alt="pessoa image"
+              />
+            }
+            @if (editForm.get('fotoPerfilUrl')!.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start"
+                  >{{ editForm.get('fotoPerfilUrlContentType')!.value }}, {{ byteSize(editForm.get('fotoPerfilUrl')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="clearInputImage('fotoPerfilUrl', 'fotoPerfilUrlContentType', 'file_fotoPerfilUrl')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_fotoPerfilUrl"
+              data-cy="fotoPerfilUrl"
+              (change)="setFileData($event, 'fotoPerfilUrl', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
           <input
-            type="text"
+            type="hidden"
             class="form-control"
             name="fotoPerfilUrl"
             id="field_fotoPerfilUrl"
             data-cy="fotoPerfilUrl"
             formControlName="fotoPerfilUrl"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="fotoPerfilUrlContentType"
+            id="field_fotoPerfilUrlContentType"
+            formControlName="fotoPerfilUrlContentType"
           />
         </div>
 

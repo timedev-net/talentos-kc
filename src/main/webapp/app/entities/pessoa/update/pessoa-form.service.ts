@@ -39,6 +39,7 @@ type PessoaFormGroupContent = {
   genero: FormControl<PessoaFormRawValue['genero']>;
   miniBio: FormControl<PessoaFormRawValue['miniBio']>;
   fotoPerfilUrl: FormControl<PessoaFormRawValue['fotoPerfilUrl']>;
+  fotoPerfilUrlContentType: FormControl<PessoaFormRawValue['fotoPerfilUrlContentType']>;
   criadoEm: FormControl<PessoaFormRawValue['criadoEm']>;
 };
 
@@ -72,6 +73,7 @@ export class PessoaFormService {
       genero: new FormControl(pessoaRawValue.genero),
       miniBio: new FormControl(pessoaRawValue.miniBio),
       fotoPerfilUrl: new FormControl(pessoaRawValue.fotoPerfilUrl),
+      fotoPerfilUrlContentType: new FormControl(pessoaRawValue.fotoPerfilUrlContentType),
       criadoEm: new FormControl(pessoaRawValue.criadoEm),
     });
   }

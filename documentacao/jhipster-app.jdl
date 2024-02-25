@@ -39,7 +39,7 @@ entity Pessoa {
     nascimento Date
     genero Genero
     miniBio String
-    fotoPerfilUrl String
+    fotoPerfilUrl ImageBlob
     criadoEm Instant
 }
 

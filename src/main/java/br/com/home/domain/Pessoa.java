@@ -44,8 +44,12 @@ public class Pessoa implements Serializable {
     @Column(name = "mini_bio")
     private String miniBio;
 
+    @Lob
     @Column(name = "foto_perfil_url")
-    private String fotoPerfilUrl;
+    private byte[] fotoPerfilUrl;
+
+    @Column(name = "foto_perfil_url_content_type")
+    private String fotoPerfilUrlContentType;
 
     @Column(name = "criado_em")
     private Instant criadoEm;
@@ -143,17 +147,30 @@ public class Pessoa implements Serializable {
         this.miniBio = miniBio;
     }
 
-    public String getFotoPerfilUrl() {
+    public byte[] getFotoPerfilUrl() {
         return this.fotoPerfilUrl;
     }
 
-    public Pessoa fotoPerfilUrl(String fotoPerfilUrl) {
+    public Pessoa fotoPerfilUrl(byte[] fotoPerfilUrl) {
         this.setFotoPerfilUrl(fotoPerfilUrl);
         return this;
     }
 
-    public void setFotoPerfilUrl(String fotoPerfilUrl) {
+    public void setFotoPerfilUrl(byte[] fotoPerfilUrl) {
         this.fotoPerfilUrl = fotoPerfilUrl;
+    }
+
+    public String getFotoPerfilUrlContentType() {
+        return this.fotoPerfilUrlContentType;
+    }
+
+    public Pessoa fotoPerfilUrlContentType(String fotoPerfilUrlContentType) {
+        this.fotoPerfilUrlContentType = fotoPerfilUrlContentType;
+        return this;
+    }
+
+    public void setFotoPerfilUrlContentType(String fotoPerfilUrlContentType) {
+        this.fotoPerfilUrlContentType = fotoPerfilUrlContentType;
     }
 
     public Instant getCriadoEm() {
@@ -200,6 +217,7 @@ public class Pessoa implements Serializable {
             ", genero='" + getGenero() + "'" +
             ", miniBio='" + getMiniBio() + "'" +
             ", fotoPerfilUrl='" + getFotoPerfilUrl() + "'" +
+            ", fotoPerfilUrlContentType='" + getFotoPerfilUrlContentType() + "'" +
             ", criadoEm='" + getCriadoEm() + "'" +
             "}";
     }

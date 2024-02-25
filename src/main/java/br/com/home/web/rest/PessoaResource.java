@@ -146,6 +146,9 @@ public class PessoaResource {
                 if (pessoa.getFotoPerfilUrl() != null) {
                     existingPessoa.setFotoPerfilUrl(pessoa.getFotoPerfilUrl());
                 }
+                if (pessoa.getFotoPerfilUrlContentType() != null) {
+                    existingPessoa.setFotoPerfilUrlContentType(pessoa.getFotoPerfilUrlContentType());
+                }
                 if (pessoa.getCriadoEm() != null) {
                     existingPessoa.setCriadoEm(pessoa.getCriadoEm());
                 }
